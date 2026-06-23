@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JerseyCo | FIFA 2026</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        // Configure Tailwind theme colors
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            900: '#134e4a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Flow Card Animations */
+        .flow-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .flow-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .jersey-graphic {
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .flow-card:hover .jersey-graphic {
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        .flow-bg {
+            transition: opacity 0.5s ease;
+        }
+
+        .flow-card:hover .flow-bg {
+            opacity: 0.15;
+        }
+
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Left: Logo -->
+                <div class="flex-1 flex justify-start">
+                    <a href="#" class="text-2xl sm:text-3xl font-black tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-teal-400">
+                        JERSEYCO
+                    </a>
+                </div>
+
+                <!-- Center: Account Icon (Absolutely positioned to guarantee exact center) -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 flex justify-center">
+                    <button class="w-12 h-12 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition-colors duration-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
+                        <i class="fa-solid fa-user text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Right: Links & Cart -->
+                <div class="flex-1 flex justify-end items-center space-x-4 sm:space-x-8">
+                    <a href="#home" class="hidden md:flex items-center space-x-2 font-semibold text-slate-600 hover:text-brand-600 transition-colors">
+                        <i class="fa-solid fa-house text-sm"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="#new-launches" class="hidden md:flex items-center space-x-2 font-semibold text-slate-600 hover:text-brand-600 transition-colors">
+                        <i class="fa-solid fa-sparkles text-sm"></i>
+                        <span>New Launches</span>
+                    </a>
+                    <button id="cartBtn" class="flex items-center space-x-2 bg-slate-900 text-white px-5 py-2.5 rounded-full hover:bg-brand-600 transition-all duration-300 shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 transform active:scale-95">
+                        <i class="fa-solid fa-shopping-cart"></i>
+                        <span class="font-semibold hidden sm:inline">Cart</span>
+                        <span id="cartCount" class="bg-white text-slate-900 text-xs font-bold px-2 py-0.5 rounded-full ml-1">0</span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden bg-slate-900 text-white py-20 sm:py-32">
+        <div class="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-brand-500 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+            <span class="text-brand-400 font-bold tracking-widest uppercase text-sm mb-4 block">FIFA World Cup 2026 Collection</span>
+            <h1 class="text-5xl sm:text-7xl font-black mb-6 tracking-tight">Gear Up For Glory.</h1>
+            <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto mb-10">Discover the official, authentic jerseys of the 2026 tournament. Wear your colors with pride.</p>
+            <a href="#new-launches" class="inline-block bg-brand-500 text-white font-bold text-lg px-8 py-4 rounded-full hover:bg-brand-400 transition-colors shadow-[0_0_20px_rgba(20,184,166,0.4)]">
+                Shop the Collection
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content: Flow Cards Grid -->
+    <main id="new-launches" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">New Launches</h2>
+                <div class="h-1 w-20 bg-brand-500 mt-4 rounded-full"></div>
+            </div>
+            <div class="hidden sm:block">
+                <button class="text-brand-600 font-semibold hover:text-brand-800 transition-colors">View All <i class="fa-solid fa-arrow-right ml-1"></i></button>
+            </div>
+        </div>
+
+        <!-- Grid Container -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Cards will be injected here by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-12 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-500 font-medium">
+            <p>&copy; 2026 Jersey Corner. Official Reseller.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // 1. Data State
+        function getCart() {
+            return JSON.parse(localStorage.getItem('jerseyCart') || '[]');
+        }
+        function saveCart(cart) {
+            localStorage.setItem('jerseyCart', JSON.stringify(cart));
+        }
+
+        let cartItems = getCart();
+        let cartCount = cartItems.reduce((sum, i) => sum + i.qty, 0);
+
+        const jerseys = [
+            { 
+                id: 1, 
+                team: 'Argentina', 
+                edition: '2026 Home', 
+                price: 120, 
+                colors: 'from-sky-400 to-blue-600',
+                bg: 'bg-sky-50',
+                image: 'jerseys/argentina.jpg'
+            },
+            { 
+                id: 2, 
+                team: 'France', 
+                edition: '2026 Away', 
+                price: 110, 
+                colors: 'from-blue-800 to-red-600',
+                bg: 'bg-blue-50',
+                image: 'jerseys/france.jpg'
+            },
+            { 
+                id: 3, 
+                team: 'USA', 
+                edition: '2026 Home', 
+                price: 95, 
+                colors: 'from-red-500 to-blue-700',
+                bg: 'bg-red-50',
+                image: 'jerseys/usa.jpg'
+            },
+            { 
+                id: 4, 
+                team: 'Brazil', 
+                edition: '2026 Home', 
+                price: 115, 
+                colors: 'from-yellow-400 to-green-500',
+                bg: 'bg-yellow-50',
+                image: 'jerseys/brasil.jpg'
+            },
+            { 
+                id: 5, 
+                team: 'Germany', 
+                edition: '2026 Home', 
+                price: 105, 
+                colors: 'from-slate-900 to-red-600',
+                bg: 'bg-slate-50',
+                image: 'jerseys/germany.jpg'
+            },
+            { 
+                id: 6, 
+                team: 'Spain', 
+                edition: '2026 Home', 
+                price: 110, 
+                colors: 'from-red-600 to-yellow-400',
+                bg: 'bg-red-50',
+                image: 'jerseys/spain.jpg'
+            },
+            { 
+                id: 7, 
+                team: 'England', 
+                edition: '2026 Home', 
+                price: 100, 
+                colors: 'from-white to-red-500',
+                bg: 'bg-slate-50',
+                image: 'jerseys/england.jpg'
+            },
+            { 
+                id: 8, 
+                team: 'Portugal', 
+                edition: '2026 Home', 
+                price: 108, 
+                colors: 'from-green-700 to-red-600',
+                bg: 'bg-green-50',
+                image: 'jerseys/portugal.jpg'
+            },
+            { 
+                id: 9, 
+                team: 'Italy', 
+                edition: '2026 Home', 
+                price: 112, 
+                colors: 'from-blue-700 to-blue-400',
+                bg: 'bg-blue-50',
+                image: 'jerseys/italy.jpg'
+            },
+            { 
+                id: 10, 
+                team: 'Netherlands', 
+                edition: '2026 Home', 
+                price: 98, 
+                colors: 'from-orange-500 to-orange-300',
+                bg: 'bg-orange-50',
+                image: 'jerseys/netherlands.jpg'
+            },
+            { 
+                id: 11, 
+                team: 'Mexico', 
+                edition: '2026 Home', 
+                price: 90, 
+                colors: 'from-green-600 to-green-400',
+                bg: 'bg-green-50',
+                image: 'jerseys/mexico.jpg'
+            },
+            { 
+                id: 12, 
+                team: 'Japan', 
+                edition: '2026 Home', 
+                price: 95, 
+                colors: 'from-blue-900 to-blue-600',
+                bg: 'bg-blue-50',
+                image: 'jerseys/japan.jpg'
+            }
+        ];
+
+        // 2. DOM Elements
+        const grid = document.getElementById('productGrid');
+        const cartCountEl = document.getElementById('cartCount');
+        const cartBtn = document.getElementById('cartBtn');
+
+        // Navigate to cart page
+        cartBtn.addEventListener('click', () => { window.location.href = 'cart.html'; });
+
+        // 3. Render Cards
+        function renderJerseys() {
+            grid.innerHTML = '';
+            
+            jerseys.forEach(jersey => {
+                // Create card container
+                const card = document.createElement('div');
+                card.className = 'flow-card relative bg-white rounded-3xl p-6 border border-slate-100 overflow-hidden group cursor-pointer flex flex-col h-full';
+                
+                card.innerHTML = `
+                    <!-- Dynamic Hover Background -->
+                    <div class="flow-bg absolute inset-0 opacity-0 bg-gradient-to-br ${jersey.colors} z-0 pointer-events-none"></div>
+                    
+                    <!-- Card Content -->
+                    <div class="relative z-10 flex flex-col h-full">
+                        
+                        <!-- Top Tags -->
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="px-3 py-1 bg-slate-900 text-white rounded-full text-xs font-bold tracking-wider uppercase shadow-sm">
+                                New
+                            </span>
+                            <button class="text-slate-400 hover:text-red-500 transition-colors focus:outline-none">
+                                <i class="fa-regular fa-heart text-xl"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Jersey Image / Graphic -->
+                        <div class="${jersey.bg} flex-grow flex items-center justify-center py-6 rounded-2xl mb-6 border border-slate-100/50 overflow-hidden">
+                            ${jersey.image
+                                ? `<img src="${jersey.image}" alt="${jersey.team} Jersey" class="jersey-graphic h-48 w-auto object-contain drop-shadow-lg">`
+                                : `<div class="jersey-graphic w-28 h-36 rounded-t-3xl rounded-b-lg bg-gradient-to-br ${jersey.colors} shadow-lg flex items-center justify-center relative">
+                                    <div class="absolute top-0 w-10 h-5 bg-white/30 rounded-b-full"></div>
+                                    <i class="fa-solid fa-shirt text-5xl text-white/40 mix-blend-overlay"></i>
+                                   </div>`
+                            }
+                        </div>
+
+                        <!-- Info & Actions -->
+                        <div class="mt-auto">
+                            <h3 class="text-2xl font-black text-slate-900 tracking-tight leading-none mb-1">${jersey.team}</h3>
+                            <p class="text-slate-500 font-medium mb-4 text-sm">${jersey.edition}</p>
+                            
+                            <div class="flex items-center justify-between mt-6">
+                                <span class="text-2xl font-black text-slate-900">$${jersey.price}</span>
+                                <button onclick="addToCart(event, ${jersey.id})" class="add-to-cart-btn w-12 h-12 rounded-full bg-slate-100 text-slate-900 group-hover:bg-slate-900 group-hover:text-white flex items-center justify-center transition-colors duration-300 focus:outline-none active:scale-90">
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // 4. Interactions
+        window.addToCart = function(event, id) {
+            event.stopPropagation();
+            const jersey = jerseys.find(j => j.id === id);
+
+            // Update localStorage cart
+            cartItems = getCart();
+            const existing = cartItems.find(i => i.id === id);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cartItems.push({ id: jersey.id, team: jersey.team, edition: jersey.edition, price: jersey.price, colors: jersey.colors, bg: jersey.bg, qty: 1 });
+            }
+            saveCart(cartItems);
+
+            // Update counter UI
+            cartCount = cartItems.reduce((sum, i) => sum + i.qty, 0);
+            cartCountEl.textContent = cartCount;
+            cartCountEl.classList.add('scale-150', 'bg-brand-500', 'text-white');
+            cartCountEl.classList.remove('bg-white', 'text-slate-900');
+            cartBtn.classList.add('scale-105');
+            setTimeout(() => {
+                cartCountEl.classList.remove('scale-150', 'bg-brand-500', 'text-white');
+                cartCountEl.classList.add('bg-white', 'text-slate-900');
+                cartBtn.classList.remove('scale-105');
+            }, 300);
+
+            const btn = event.currentTarget;
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i>';
+            btn.classList.add('bg-green-500', 'text-white');
+            btn.classList.remove('group-hover:bg-slate-900');
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('bg-green-500', 'text-white');
+                btn.classList.add('group-hover:bg-slate-900');
+            }, 1000);
+        };
+
+        // 5. Initialize
+        function init() {
+            renderJerseys();
+            cartCountEl.textContent = cartCount;
+        }
+        document.addEventListener('DOMContentLoaded', init);
+
+    </script>
+</body>
+</html>
