@@ -89,13 +89,7 @@
                     </a>
                 </div>
 
-                <!-- Center: Account Icon (Absolutely positioned to guarantee exact center) -->
-                <div class="absolute left-1/2 transform -translate-x-1/2 flex justify-center">
-                    <button class="w-12 h-12 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition-colors duration-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2">
-                        <i class="fa-solid fa-user text-xl"></i>
-                    </button>
-                </div>
-
+                
                 <!-- Right: Links & Cart -->
                 <div class="flex-1 flex justify-end items-center space-x-4 sm:space-x-8">
                     <a href="#home" class="hidden md:flex items-center space-x-2 font-semibold text-slate-600 hover:text-brand-600 transition-colors">
@@ -111,6 +105,10 @@
                         <span class="font-semibold hidden sm:inline">Cart</span>
                         <span id="cartCount" class="bg-white text-slate-900 text-xs font-bold px-2 py-0.5 rounded-full ml-1">0</span>
                     </button>
+                    <button class="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-slate-100 text-slate-600 hover:bg-brand-50 hover:text-brand-600 transition-colors duration-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 shrink-0">
+                        <i class="fa-solid fa-user text-lg sm:text-xl"></i>
+                    </button>
+                    
                 </div>
 
             </div>
@@ -175,7 +173,7 @@
                 id: 1, 
                 team: 'Argentina', 
                 edition: '2026 Home', 
-                price: 120, 
+                price: 1800, 
                 colors: 'from-sky-400 to-blue-600',
                 bg: 'bg-sky-50',
                 image: 'argentina.jpg'
@@ -184,7 +182,7 @@
                 id: 2, 
                 team: 'France', 
                 edition: '2026 Away', 
-                price: 110, 
+                price: 1100, 
                 colors: 'from-blue-800 to-red-600',
                 bg: 'bg-blue-50',
                 image: 'france.jpg'
@@ -193,7 +191,7 @@
                 id: 3, 
                 team: 'USA', 
                 edition: '2026 Home', 
-                price: 95, 
+                price: 950, 
                 colors: 'from-red-500 to-blue-700',
                 bg: 'bg-red-50',
                 image: 'usa.jpg'
@@ -202,7 +200,7 @@
                 id: 4, 
                 team: 'Brazil', 
                 edition: '2026 Home', 
-                price: 115, 
+                price: 1150, 
                 colors: 'from-yellow-400 to-green-500',
                 bg: 'bg-yellow-50',
                 image: 'brasil.jpg'
@@ -211,7 +209,7 @@
                 id: 5, 
                 team: 'Germany', 
                 edition: '2026 Home', 
-                price: 105, 
+                price: 1050, 
                 colors: 'from-slate-900 to-red-600',
                 bg: 'bg-slate-50',
                 image: 'germany.jpg'
@@ -220,7 +218,7 @@
                 id: 6, 
                 team: 'Spain', 
                 edition: '2026 Home', 
-                price: 110, 
+                price: 1100, 
                 colors: 'from-red-600 to-yellow-400',
                 bg: 'bg-red-50',
                 image: 'spain.jpg'
@@ -229,7 +227,7 @@
                 id: 7, 
                 team: 'England', 
                 edition: '2026 Home', 
-                price: 100, 
+                price: 1000, 
                 colors: 'from-white to-red-500',
                 bg: 'bg-slate-50',
                 image: 'england.jpg'
@@ -238,7 +236,7 @@
                 id: 8, 
                 team: 'Portugal', 
                 edition: '2026 Home', 
-                price: 108, 
+                price: 1500, 
                 colors: 'from-green-700 to-red-600',
                 bg: 'bg-green-50',
                 image: 'portugal.jpg'
@@ -247,7 +245,7 @@
                 id: 9, 
                 team: 'Italy', 
                 edition: '2026 Home', 
-                price: 112, 
+                price: 1120, 
                 colors: 'from-blue-700 to-blue-400',
                 bg: 'bg-blue-50',
                 image: 'italy.jpg'
@@ -256,7 +254,7 @@
                 id: 10, 
                 team: 'Netherlands', 
                 edition: '2026 Home', 
-                price: 98, 
+                price: 900, 
                 colors: 'from-orange-500 to-orange-300',
                 bg: 'bg-orange-50',
                 image: 'netherlands.jpg'
@@ -265,7 +263,7 @@
                 id: 11, 
                 team: 'Mexico', 
                 edition: '2026 Home', 
-                price: 90, 
+                price: 900, 
                 colors: 'from-green-600 to-green-400',
                 bg: 'bg-green-50',
                 image: 'mexico.jpg'
@@ -274,7 +272,7 @@
                 id: 12, 
                 team: 'Japan', 
                 edition: '2026 Home', 
-                price: 95, 
+                price: 950, 
                 colors: 'from-blue-900 to-blue-600',
                 bg: 'bg-blue-50',
                 image: 'japan.jpg'
@@ -332,7 +330,7 @@
                             <p class="text-slate-500 font-medium mb-4 text-sm">${jersey.edition}</p>
                             
                             <div class="flex items-center justify-between mt-6">
-                                <span class="text-2xl font-black text-slate-900">$${jersey.price}</span>
+                                <span class="text-2xl font-black text-slate-900">Rs. ${jersey.price}</span>
                                 <button onclick="addToCart(event, ${jersey.id})" class="add-to-cart-btn w-12 h-12 rounded-full bg-slate-100 text-slate-900 group-hover:bg-slate-900 group-hover:text-white flex items-center justify-center transition-colors duration-300 focus:outline-none active:scale-90">
                                     <i class="fa-solid fa-plus"></i>
                                 </button>
